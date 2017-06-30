@@ -1,0 +1,22 @@
+html{
+	
+}
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+body{
+	font-family: 'Lobster', cursive;
+	text-align: center;
+}
+
+#hangman {
+	width: 600px;
+	height: 100px;
+	text-align: center;
+}
+
+#guessAnswer {
+	text-align: center;
+}
+
+/*.heading {
+	text-align: center;
+}*/

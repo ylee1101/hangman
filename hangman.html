@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../hangman/assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+
+	<title>Hangman Game</title>
+</head>
+
+
+   	<div id="hangman">
+		<h1>Welcome to Fashion Hangman Game!</h1>
+	</div>
+
+	<!-- 1. images need to be linked to the answers. 2. need to reset the game when it has been completed. 3. prevent retyping same letters for counts.  -->
+
+	<script type="text/javascript">
+
+		var randomWordArr = ["gucci", "louisvuttion", "prada", "hermes", "kenzo", "fendi", "thombrowne", "tomford", "givenchy", "yvessaintlaurent"]
+
+		// var randomWordArr = {
+		// 	answers: ["gucci", "louisvuttion", "prada", "hermes", "kenzo", "fendi", "thombrowne", "tomford", "givenchy", "yvessaintlaurent"],
+		// 	imagepath: ["assets/image/gucci.png","assets/image/louisvuttion.png","assets/image/prada.png","assets/image/hermes.png","assets/image/kenzo.png","assets/image/fendi.png","assets/image/thombrowne.png","assets/image/tomford.png","assets/image/givenchy.png","assets/image/yvessaintlaurent.png"],
+		// };
+
+		var randomWord = randomWordArr[Math.floor(Math.random() * randomWordArr.length)];
+		var s;
+		var count = 0;
+		var answerArray = [];
+		// var myIndex;
+		// var imagepath;
+		// var word;
+		// var wordLength;
+
+		function startUp () {
+
+			for (var i = 0; i < randomWord.length; i++) {
+
+				answerArray[i] = "_";
+			}
+
+			s = answerArray.join("");
+			document.getElementById("answer").innerHTML = s;
+
+		}
+
+
+		// function resetGame () {
+
+		// 	i;
+		// 	count = 0;
+		// 	answerArray = [];
+		// 	myIndex=Math.floor(Math.random() * randomWordArr.answers.length);
+		// 	imagepath = randomWordArr.answers[myIndex];
+		// 	word = randomWordArr.imagepath[myIndex];
+		// 	wordLength=word.length;
+
+		// 	document.getElementById("hangmanimage").src = imagepath;
+		// 	mainDiv = document.getElementById("guessAnswer");
+		//     while (mainDiv.firstChild) {
+		//     	mainDiv.removeChild(mainDiv.firstChild);
+		//     }
+
+		// 	for (i=0;i<wordLenght;i++) {
+		// 		var newdiv = document.createElement("div")
+		// 		newdiv.id = "word-"+word[i]+i;
+		// 		newdiv.className = "wordclass";
+		// 		mainDiv.appendChild(newdiv);
+		// 	}
+
+		// 	document.getElementById("error").innerHTML = ""
+
+
+
+
+		// }
+		
+
+		function Letter() {
+
+			var letter = document.getElementById("letter").value;
+
+			if (letter.length > 0) {
+
+				for (var i = 0; i < randomWord.length; i++) {
+					
+					if (randomWord[i] === letter) {
+
+						answerArray[i] = letter;
+					}
+				}
+
+				count++;
+				document.getElementById("counter").innerHTML = "No. of Clicks " + count;
+				document.getElementById("answer").innerHTML = answerArray.join(" ");
+
+			}
+
+			if(count>10) {
+
+				document.getElementById("stat").innerHTML = " Game Over! You really do not know fashion!"
+			}
+		}
+
+		
+
+	</script>
+
+<body onload="startUp()">
+	<h1>Guess a letter</h1>
+	<input id="letter" type="text">
+	<input type="button" value="letter" onClick="Letter()"/>
+	<p id="answer"></p>
+	<p id="counter"></p>
+	<p id="stat"></p>
+
+<!-- 	<div id="background">
+	<div class="container">
+		<div class="row">
+			<h1>Guess a letter</h1>
+			<hr>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div>
+					<img src="#" id="hangmanimage" class="hangmanimage" width="200px" height="200">
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-4">
+				<div>
+					<input id="letter" type="text">
+					<input type="button" value="letter" onClick="Letter()"/>
+					<p id="answer"></p>
+					<p id="counter"></p>
+					<p id="stat"></p>
+					<button id="clear">Clear</button>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div id="guessAnswer"></div>
+		</div>
+	</div>
+	</div> -->
+
+
+</body>
+</html>
